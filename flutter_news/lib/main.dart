@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news/pages/welcome/welcomePage.dart';
 
 void main() {
-  MyApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text('Title')],
-          ),
-        ),
-        body: Text('Hello Flutter')
+      title: '新闻News',
+      home: WelcomePage(),
     );
   }
 }

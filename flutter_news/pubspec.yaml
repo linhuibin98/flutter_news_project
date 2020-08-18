@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # add flutter_screenutil
+  # 屏幕适配
   flutter_screenutil: ^2.3.0
 
 
@@ -76,7 +76,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   fonts:
-    - family: Averir
+    - family: Avenir
       fonts:
         - asset: assets/fonts/Avenir-Book.ttf
           weight: 400
