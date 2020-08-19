@@ -23,7 +23,6 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-
   /// 页头说明
   Widget _buildPageHeadDetail() {
     return Container(
@@ -42,6 +41,7 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
+  /// Featrue项目
   Widget _buildPageFeatureItem({String imageName, String intro, double marginTop = 40.0}) {
     return Container(
       child: Container(
@@ -78,19 +78,43 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-//  _buildPageFeatureWrapper() {
-//    List itemData = [
-//      { 'imageName': '1', 'intro': 'Compelling photography and typography provide a beautiful reading', 'marginTop': 86, },
-//      { 'imageName': '2', 'intro': 'Sector news never shares your personal data with advertisers or publishers', 'marginTop': 40, },
-//      { 'imageName': '3', 'intro': 'You can get Premium to unlock hundreds of publications', 'marginTop': 40, },
-//    ];
-//
-//    return itemData.map((e) => _buildPageFeatureItem(
-//        imageName: e.imageName,
-//        intro: e.intro,
-//        marginTop: e.marginTop
-//    ),);
-//  }
+  /// Featrue项目容器
+ List<Widget> _buildPageFeatureWrapper() {
+    var itemData = [
+      { 'imageName': '1', 'intro': 'Compelling photography and typography provide a beautiful reading', 'marginTop': 86.0, },
+      { 'imageName': '2', 'intro': 'Sector news never shares your personal data with advertisers or publishers', 'marginTop': 40.0, },
+      { 'imageName': '3', 'intro': 'You can get Premium to unlock hundreds of publications', 'marginTop': 40.0, },
+    ];
+
+    return itemData.map((item) => _buildPageFeatureItem(
+        imageName: item['imageName'],
+        intro: item['intro'],
+        marginTop: item['marginTop']
+    ),).toList();
+  }
+
+  /// 开始按钮
+  Widget _buildStartButton(BuildContext context) {
+    return Container(
+      width: duSetWidth(295),
+      height: duSetHeight(44),
+      margin: EdgeInsets.only(bottom: duSetHeight(20)),
+      child: FlatButton(
+        color: AppColors.primaryElement,
+        textColor: AppColors.primaryElementText,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(duSetWidth(6)))
+        ),
+        child: Text('Get Started'),
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            "/sign-in",
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,21 +128,9 @@ class WelcomePage extends StatelessWidget {
           children: [
             _buildPageHeadTitle(),
             _buildPageHeadDetail(),
-            _buildPageFeatureItem(
-                imageName: '1',
-                intro: 'Compelling photography and typography provide a beautiful reading',
-                marginTop: 86
-            ),
-            _buildPageFeatureItem(
-                imageName: '2',
-                intro: 'Sector news never shares your personal data with advertisers or publishers',
-                marginTop: 40
-            ),
-            _buildPageFeatureItem(
-                imageName: '3',
-                intro: 'You can get Premium to unlock hundreds of publications',
-                marginTop: 40
-            ),
+            ..._buildPageFeatureWrapper(),
+            Spacer(),
+            _buildStartButton(context),
           ],
         ),
       ),
