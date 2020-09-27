@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_news/common/utils/utils.dart';
 import 'package:flutter_news/common/values/values.dart';
 
@@ -86,6 +88,109 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  // form input
+  Widget _buildInput() {
+
+    return Container(
+      width: duSetWidth(280),
+      margin: EdgeInsets.only(top: duSetHeight(26)),
+      decoration: BoxDecoration(
+
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: duSetHeight(50),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(246,246,246, 0)
+            ),
+            child: TextField(
+              style: TextStyle(
+                  color: Color.fromRGBO(45,45,47, 1)
+              ),
+              decoration: InputDecoration(
+                labelText: 'Email',
+                filled: true,
+                fillColor: Color.fromRGBO(246,246,246, 1),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                border: OutlineInputBorder(borderSide: BorderSide.none),
+              ),
+              onChanged: (v) {
+                print('onChanged：' + v);
+              },
+            ),
+          ),
+          Container(
+            height: duSetHeight(50),
+            margin: EdgeInsets.symmetric(vertical: duSetHeight(15)),
+            child: TextField(
+              style: TextStyle(
+                color: Color.fromRGBO(45,45,47, 1)
+              ),
+              decoration: InputDecoration(
+                labelText: 'Password',
+                filled: true,
+                fillColor: Color.fromRGBO(246,246,246, 1),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                border: OutlineInputBorder(borderSide: BorderSide.none),
+              ),
+              onChanged: (v) {
+                print('onChanged：' + v);
+              },
+            ),
+          ),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: FlatButton(
+                      child: Text('Sign up'),
+                      color: Color.fromRGBO(45,45,47, 1),
+                      textColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                      onPressed: () {
+
+                      }
+
+                  ),
+                ),
+                SizedBox(
+                  width: duSetWidth(10),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      child: Text('Sign in'),
+                      color: Color.fromRGBO(41,103,255, 1),
+                      textColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                      onPressed: () {
+
+                      }
+
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: duSetHeight(10)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Forgot password?',
+                  style: TextStyle(
+                    color: Color.fromRGBO(41,103,255, 1)
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,6 +198,7 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           children: <Widget>[
             _buildLogo(),
+            _buildInput(),
           ],
         ),
       ),
