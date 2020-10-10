@@ -71,7 +71,6 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
           ),
-          
           Text(
             'news',
             textAlign: TextAlign.center,
@@ -105,6 +104,7 @@ class _SignInPageState extends State<SignInPage> {
               color: Color.fromRGBO(246,246,246, 0)
             ),
             child: TextField(
+
               style: TextStyle(
                   color: Color.fromRGBO(45,45,47, 1)
               ),
@@ -114,6 +114,14 @@ class _SignInPageState extends State<SignInPage> {
                 fillColor: Color.fromRGBO(246,246,246, 1),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
                 border: OutlineInputBorder(borderSide: BorderSide.none),
+              // helperText: '用户名长度为6-10个字母', /// 文本框下面 文字提示
+              // errorText : '用户名长度为6-10个字母', /// 显示在输入框的左下部，默认字体为红色
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      print('清空输入框');
+                    },
+                  )
               ),
               onChanged: (v) {
                 print('onChanged：' + v);
@@ -124,6 +132,7 @@ class _SignInPageState extends State<SignInPage> {
             height: duSetHeight(50),
             margin: EdgeInsets.symmetric(vertical: duSetHeight(15)),
             child: TextField(
+              obscureText: true,
               style: TextStyle(
                 color: Color.fromRGBO(45,45,47, 1)
               ),
@@ -133,6 +142,12 @@ class _SignInPageState extends State<SignInPage> {
                 fillColor: Color.fromRGBO(246,246,246, 1),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
                 border: OutlineInputBorder(borderSide: BorderSide.none),
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      print('清空输入框');
+                    },
+                  )
               ),
               onChanged: (v) {
                 print('onChanged：' + v);
@@ -194,14 +209,19 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            _buildLogo(),
-            _buildInput(),
-          ],
-        ),
-      ),
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        children: <Widget>[
+          Center(
+            child: Column(
+              children: <Widget>[
+                _buildLogo(),
+                _buildInput(),
+              ],
+            ),
+          ),
+        ],
+      )
     );
   }
 }
