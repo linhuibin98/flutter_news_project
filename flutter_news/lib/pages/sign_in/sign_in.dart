@@ -12,8 +12,11 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   // email的控制器
   final TextEditingController _emailController = TextEditingController();
+  String _email = "";
   // 密码的控制器
   final TextEditingController _passController = TextEditingController();
+  String _password = "";
+
 
   // logo
   Widget _buildLogo() {
@@ -104,7 +107,7 @@ class _SignInPageState extends State<SignInPage> {
               color: Color.fromRGBO(246,246,246, 0)
             ),
             child: TextField(
-
+              controller: _emailController,
               style: TextStyle(
                   color: Color.fromRGBO(45,45,47, 1)
               ),
@@ -119,12 +122,15 @@ class _SignInPageState extends State<SignInPage> {
                   suffixIcon: IconButton(
                     icon: Icon(Icons.clear),
                     onPressed: () {
-                      print('清空输入框');
+                      _emailController.clear();
+                      print("_password: $_password");
+                      _email = "";
                     },
                   )
               ),
               onChanged: (v) {
                 print('onChanged：' + v);
+                _email = v;
               },
             ),
           ),
@@ -132,6 +138,7 @@ class _SignInPageState extends State<SignInPage> {
             height: duSetHeight(50),
             margin: EdgeInsets.symmetric(vertical: duSetHeight(15)),
             child: TextField(
+              controller: _passController,
               obscureText: true,
               style: TextStyle(
                 color: Color.fromRGBO(45,45,47, 1)
@@ -145,12 +152,15 @@ class _SignInPageState extends State<SignInPage> {
                   suffixIcon: IconButton(
                     icon: Icon(Icons.clear),
                     onPressed: () {
-                      print('清空输入框');
+                      _passController.clear();
+                      print("_password: $_password");
+                      _password = "";
                     },
                   )
               ),
               onChanged: (v) {
                 print('onChanged：' + v);
+                _password = v;
               },
             ),
           ),
@@ -179,8 +189,17 @@ class _SignInPageState extends State<SignInPage> {
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                       onPressed: () {
-
-                      }
+                        if (_email == "") {
+                          print("邮箱不能为空");
+                          return;
+                        }
+                        if (_password == "") {
+                          print("密码不能为空");
+                          return;
+                        }
+                        print("登录成功");
+                        Navigator.pushNamed(context, '/test');
+                      },
 
                   ),
                 ),
